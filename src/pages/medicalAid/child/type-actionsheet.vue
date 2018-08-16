@@ -1,0 +1,64 @@
+/* 选择组件 */
+<template>
+    <action-sheet
+        v-show="opened" 
+        @close="close" 
+        :position="'top'">
+        <div 
+            class="cs-item between"
+            v-for="(item,index) in types"
+            :class="[{'active': currentType==index}]"
+            @click="changeType(index)">
+            <span>{{item}}</span>
+            <svg class="icon" aria-hidden="true">
+                <use :xlink:href="currentType==index?'#icon-xuanzhong':'#icon-weixuanzhong'"></use>
+            </svg>
+        </div>
+    </action-sheet>
+</template>
+
+<script>
+    import {popupWindowRouteMixin} from '../../../plugin/mixin';
+
+    export default {
+        name: 'medicalActionsheet',
+        mixins: [popupWindowRouteMixin],
+        props:{
+            opened: {},
+            currentType: {
+                type: Number
+            },
+            types: {
+                type: Array
+            }
+        },
+        data() {
+            return {
+            };
+        },
+        methods: {
+            changeType(index) {
+                this.$emit('medicalAction',index);
+                this.close();
+            },
+        }
+    };
+</script>
+
+<style lang="scss" scoped>
+    @import "@/public/scss/common.scss";
+
+    .cs-item {
+        height: 44px;
+        line-height: 44px;
+        padding: 0 15px;
+        @include bd-bottom;
+        &.between {
+            @include spacebetween;            
+        }
+        &.active {
+            background-color: #F3FAED;
+            @include txt-deepgreen;
+        }
+    }
+</style>

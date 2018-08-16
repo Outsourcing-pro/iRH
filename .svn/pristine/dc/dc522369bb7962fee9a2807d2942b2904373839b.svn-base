@@ -1,0 +1,215 @@
+<template>
+	<div class="page">
+        <div class="header">
+            <!-- 导航 -->
+            <div class="back-nav" @click="$router.back()">
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-nav_fanhui_baise"></use>
+                </svg>{{ msg }}
+            </div>
+            <!-- 筛选 -->
+            <div class="filter">
+                <div class="filter">
+                    {{ setActive }}
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-xialakuangjiantou"></use>
+                    </svg>
+                </div>
+            </div>
+            <div class="separate"></div>
+            <div class="date">
+                日期选择
+            </div>
+            <div class="separate"></div>
+        </div>
+		<div class="container">
+
+            <div class="list">
+
+                <!-- 健康作业 -->
+                <div class="item" @click="filterList('jkzy')">
+                    <div class="title">
+                        <span class="name">健康作业</span>
+                        <span class="place">场所：居家</span>
+                    </div>
+                    <div class="main-info">
+                        <div>
+                            <span class="name">开始日期：</span>
+                            <span class="info">2018-7-16</span>
+                        </div>
+                        <div>
+                            <span class="name">结束日期：</span>
+                            <span class="info">2018-7-17</span>
+                        </div>
+                        <div>
+                            <span class="name">持续天数：</span>
+                            <span class="info">1</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="separate"></div>
+
+                <!-- iRH服务 -->
+                <div class="item" @click="filterList('iRHService')">
+                    <div class="title">
+                        <span class="name">iRH服务</span>
+                        <span class="place">场所：居家</span>
+                    </div>
+                    <div class="main-info">
+                        <div>
+                            <span class="name">开始日期：</span>
+                            <span class="info">2018-7-16</span>
+                        </div>
+                        <div>
+                            <span class="name">结束日期：</span>
+                            <span class="info">2018-7-17</span>
+                        </div>
+                        <div>
+                            <span class="name">持续天数：</span>
+                            <span class="info">1</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="separate"></div>
+
+                <!-- 病历、检查、处方 -->
+                <div class="item" @click="filterList('jcmx')">
+                    <div class="title">
+                        <span class="name">病历、检查、处方</span>
+                        <span class="place">场所：居家</span>
+                    </div>
+                    <div class="main-info">
+                        <div>
+                            <span class="name">开始日期：</span>
+                            <span class="info">2018-7-16</span>
+                        </div>
+                        <div>
+                            <span class="name">结束日期：</span>
+                            <span class="info">2018-7-17</span>
+                        </div>
+                        <div>
+                            <span class="name">持续天数：</span>
+                            <span class="info">1</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="separate"></div>
+            </div>
+		</div>
+	</div>
+</template>
+
+<script>
+
+export default {
+    name: "HealthEventList",
+	data() {
+		return {
+            msg: "健康事件",
+		};
+    },
+    computed: {
+        getRouter() {
+            return this.$router.currentRoute;
+        },
+        setActive() {
+            // return this.type === 'jcmx' ? '检查明细' : this.type === 'cfhz' ? '处方汇总' 
+            //         : this.type === 'blhz' ? '病历汇总' : this.type === 'zyhz' ? '作业汇总'
+            //         : '全部';
+        }
+    },
+    created() {
+        this.type = this.getRouter.params.type;
+        console.log(this.msg, this.type)
+    },
+    methods: {
+        filterList(type) {
+            let path = type === 'iRHService' ? 'iRHForm' : ''
+            this.$router.push({path: `/${path}`})
+        },
+        routeCaseHistory(type) {
+            // type为指定的详情页面
+            this.$router.push({path: `/caseHistoryDetail/${type}`})
+        }
+    },
+    beforeRouteUpdate(to, from, next) {
+        console.log(to, from)
+        this.type = to.params.type;
+        next();
+    }
+};
+</script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style lang="scss" scoped>
+    @import '@/public/scss/common.scss';
+
+	.page {
+        @include body-bgColor();
+        .header {
+            .back-nav {
+                @include nav-top;
+            }
+            .filter {
+                @include item-bgColor();
+                @include flex-center();
+                @include deeper-gray();
+                font-size: 16px;
+                height: 40px;
+            }
+            .date {
+                @include item-bgColor();
+                @include item-margin(0, 10px, 0, 10px);
+                @include border-radius();
+                height: 40px;
+            }
+        }
+        .container {
+            height: calc(100vh - 154px);
+            overflow-y: auto;
+            .list {
+                .item {
+                    @include item-bgColor();
+                    @include border-radius();
+                    @include bd-color();
+                    @include item-margin(0, 10px, 0, 10px);
+                    .title {
+                        @include bd-left-extend(2px);
+                        @include bd-bottom();
+                        @include spacebetween();
+                        @include item-padding-between(20px);
+                        .name {
+                            @include deeper-gray();
+                            @include fontsize18();
+                            padding: 12px 0;
+                        }
+                        .place {
+                            @include txt-light-gray();
+                            @include fontsize14();
+                        }
+                    }
+                    .main-info {
+                        @include fontsize15();
+                        padding: 15px;
+                        >div {
+                            @include flex();
+                            min-height: 24px;
+                            line-height: 24px;
+                        }
+                        .name {
+                            @include txt-light-gray();
+                            min-width: 75px;
+                        }
+                        .info {
+                            @include deeper-gray();
+                        }
+                        .details {
+                            min-height: 24px;
+                        }
+                    }
+                }
+            }
+        }
+	}
+
+</style>

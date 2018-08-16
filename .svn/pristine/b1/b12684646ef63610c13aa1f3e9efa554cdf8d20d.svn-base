@@ -1,0 +1,195 @@
+/* 字体大小 */
+
+@mixin fontsize13 {
+	font-size: 13px;
+}
+// 页面的主要字体大小
+@mixin fontsize15 {
+	font-size: 15px;
+}
+@mixin fontsize16 {
+	font-size: 16px;
+}
+// 一般用于标题类
+@mixin fontsize18 {
+	font-size: 18px;
+}
+
+/* 字体颜色 */
+
+// 更深的灰色：一般用于表格布局的header
+@mixin deeper-gray {
+	color: #202020;
+}
+// 深灰色：一般用户标题类
+@mixin txt-deep-gray {
+	color: #333333;
+}
+// 浅灰色：一般用于对标题进行描述的类
+@mixin txt-light-gray {
+	color: #888888;
+}
+// 深绿色：一般用于操作按钮的字体颜色
+@mixin txt-deepgreen {
+	color: #05703D;
+}
+// 白色字体：一般用于设有背景色的容器
+@mixin txt-wihte {
+	color: #ffffff;
+}
+
+/* 圆角 */
+
+// 默认的圆角大小
+@mixin border-radius {
+	border-radius: 5px;
+}
+
+/* 页面背景色 */
+@mixin body-bgColor {
+	background-color: rgba(240, 239, 243, 1);
+}
+/* 列表中item的背景色 */
+@mixin item-bgColor {
+	background-color: rgba(255, 255, 255, 1);
+}
+@mixin item-active-bgColor {
+	background-color: rgba(243,250,237,1);
+}
+
+/* 顶部导航 */
+@mixin nav-top {
+	@include flex-center();
+	width: 100%;
+	height: 44px;
+	color: #ffffff;
+	background-color: #7BCF33;
+}
+
+/* 线条 */
+@mixin bd-color {
+	border: 1px solid #d9d9d9;
+}
+@mixin bd-top {
+	position: relative;
+	width: 100%;
+	&::before {
+		content: '';
+		position: absolute;
+		width: 100%;
+		top: 0;
+		border-top: 1px solid #d9d9d9;
+	}
+}
+@mixin bd-bottom {
+	position: relative;
+	width: 100%;
+	&::before {
+		content: '';
+		position: absolute;
+		width: 100%;
+		top: 0;
+		border-bottom: 1px solid #d9d9d9;
+	}
+}
+@mixin bd-left($w, $c) {
+	// #7BCF33
+	position: relative;
+	&::before {
+		content: '';
+		position: absolute;
+		height: 100%;
+		left: 0;
+		border-left: $w solid $c;
+	}
+}
+
+/* input, textarea */
+::-webkit-input-placeholder {
+	@include txt-light-gray;
+}
+
+/* 	项目左右内边距 */
+
+@mixin item-padding-between {
+	padding: 0  10px,	
+}
+
+/* 自定义的内边距 */
+@mixin item-padding($top, $right, $bottom, $left) {
+	margin: $top, $right, $bottom, $left;
+}
+
+/* 项目上外边距 */
+@mixin item-margin-top {
+	margin-top: 15px;
+}
+
+/* 项目下外边距 */
+@mixin item-margin-bottom {
+	margin-bottom: 15px;
+}
+
+/* 自定义的外边距 */
+@mixin item-margin($top, $right, $bottom, $left) {
+	margin: $top, $right, $bottom, $left;
+}
+
+
+/* item的默认高度 */
+@mixin itemWidth {
+	width: 100%;
+}
+@mixin itemHeight {
+	height: 44px;
+}
+
+/* 弹性布局 */
+@mixin flex {
+	display: flex;
+}
+// 项目沿主轴居中对齐
+@mixin flex-center {
+	@include flex();
+	justify-content: center;
+	align-items: center;
+}
+// 水平布局-两端对齐-垂直居中
+@mixin spacebetween {
+	@include flex();
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+}
+// 水平布局-项目两侧间隔相等，垂直居中
+@mixin spacearound {
+	@include flex();
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: center
+}
+// 水平居中-项目沿主轴均匀排列-垂直居中
+@mixin spaceevenly {
+	@include flex();
+	flex-direction: row;
+	justify-content: space-evenly;
+	align-items: center
+}
+
+/* 垂直布局 */
+@mixin flex-column {
+	@include flex();
+	flex-direction: column;
+	justify-content: center;
+	align-items: center
+}
+
+@mixin flexitem {
+	background: $item-bg-color;
+}
+
+/* 底部导航通用样式 */
+@mixin nav-bar {
+	width: 100%;
+	height: 49px;
+}

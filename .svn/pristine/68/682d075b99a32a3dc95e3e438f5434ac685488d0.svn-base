@@ -1,0 +1,93 @@
+<template>
+	<div class="page">
+        <div class="header">
+            <!-- 导航 -->
+            <div class="back-nav" @click="$router.back()">
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-nav_fanhui_baise"></use>
+                </svg>{{ msg }}
+            </div>
+        </div>
+		<div class="container">
+            <div class="from-item-single">
+                <div>
+                    <div>场所：</div>
+                    <div>门诊</div>
+                </div>
+                <div>
+                    <div>病种：</div>
+                    <div>肺气肿</div>
+                </div>
+                <div>
+                    <div>手机号码：</div>
+                    <div>15673829388</div>
+                </div>
+            </div>
+            <div class="separate"></div>
+            <div class="from-item-single">
+                <div>
+                    <div>医院/诊所：</div>
+                    <div>省人民医院</div>
+                </div>
+                <div>
+                    <div>科室：</div>
+                    <div>呼吸科</div>
+                </div>
+                <div>
+                    <div>主治医生：</div>
+                    <div>张柳艳</div>
+                </div>
+                <div>
+                    <div>开始时间：</div>
+                    <div>2017-10-08</div>
+                </div>
+                <div>
+                    <div>结束时间：</div>
+                    <div>2017-10-16</div>
+                </div>
+            </div>
+            <div class="separate"></div>
+            <div class="from-item-single">
+                <div>
+                    <div>状态：</div>
+                    <div>进行中</div>
+                </div>
+            </div>
+            <div class="separate"></div>
+            <div class="from-item-multi">
+                <div>备注：</div>
+                <div>平时注意多休息，多运动。</div>
+            </div>
+		</div>
+	</div>
+</template>
+
+<script>
+export default {
+	name: "medicalRecords",
+	data() {
+		return {
+            msg: "就医记录",
+		};
+    },
+    created() {
+        console.log(13)
+    },
+};
+</script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style lang="scss" scoped>
+    @import '@/public/scss/common.scss';
+
+	.page {
+        @include body-bgColor();
+        
+        .header {
+            .back-nav {
+                @include nav-top;
+            }
+        }
+	}
+
+</style>

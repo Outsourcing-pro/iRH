@@ -1,0 +1,118 @@
+import Vue from 'vue'
+import Router from 'vue-router'
+import HomePage from '@/pages/HomePage'
+
+// import PatientManagement from '@/pages/patientManagement/list'
+const patientList = () => import(/* webpackChunkName: "A2-hzgl" */ '@/pages/patientManagement/list')
+const PatientDetail = () => import(/* webpackChunkName: "A2-hzgl" */ '@/pages/patientManagement/detail')
+
+
+/* Example模块 */
+// import ExampleHome from '@/example/example'
+/* 导入异步组件块 */
+// import One from '../example/chunk-one/index'
+// import Two from '../example/chunk-two/index'
+// import TestPage from '../example/test-router/index'
+// import StorePage from '../example/global-store/index.vue'
+// import NoModules from '../example/global-store/child/noModules.vue'
+// import Modules from '../example/global-store/child/modules.vue'
+/* Example end */
+
+/**刘超 */
+import LC from '../pages/lc.vue';
+const MedicalRecords = () => import(/* webpackChunkName: "A13-jyjl" */ '@/pages/medicalRecords/medical-records');
+const MedicalRecordsDetail = () => import(/* webpackChunkName: "A13-1-jyjl-xq" */ '@/pages/medicalRecords/medical-records-detail');
+const MedicalRecordsHistory = () => import(/* webpackChunkName: "A14-jyjl-bl" */ '@/pages/medicalRecords/medical-records-history');
+/**刘超 */
+Vue.use(Router)
+
+
+export default new Router({
+	routes: [
+		{
+			path: '/',
+			name: 'HomePage',
+			component: HomePage
+		},
+		{
+			path: '/patientList',
+			name: 'patientList',
+			component: patientList
+		}
+		,
+		{
+			path: '/patientDetail',
+			name: 'PatientDetail',
+			component: PatientDetail
+		}
+		/* example */
+		/* {
+			path: '/example',
+			name: 'ExamplePage',
+			component: ExampleHome,
+		},
+		{
+			path: '/One',
+			name: 'test1',
+			component: One.Test1
+		},
+		{
+			path: '/Two',
+			name: 'test2',
+			component: One.Test2
+		},
+		{
+			path: '/Three',
+			name: 'test3',
+			component: One.Test3
+		},
+		{
+			path: '/Four',
+			name: 'test4',
+			component: Two.Test4
+		},
+		{
+			path: '/Five',
+			name: 'test5',
+			component: Two.Test5
+		},
+		{
+			path: '/test*',
+			name: 'testpage',
+			component: TestPage
+		},
+		{
+			path: '/store',
+			name: 'storepage',
+			component: StorePage,
+		},
+		{
+			path: '/noModules',
+			name: 'noModulespage',
+			component: NoModules
+		},
+		{
+			path: '/modules',
+			name: 'modulespage',
+			component: Modules
+		}, */
+		/* example end */
+		,{
+			path: '/lc',
+			name: 'lcPages',
+			component: LC
+		},{
+			path: '/medicalRecords',
+			name: 'MedicalRecords',
+			component: MedicalRecords
+		},{
+			path: '/medicalRecordsDetail',
+			name: 'MedicalRecordsDetail',
+			component: MedicalRecordsDetail
+		},{
+			path: '/medicalRecordsHistory',
+			name: 'MedicalRecordsHistory',
+			component: MedicalRecordsHistory
+		}
+	]
+})

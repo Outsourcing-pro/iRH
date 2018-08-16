@@ -1,0 +1,130 @@
+/** 
+A14就医记录_病历
+*/
+<template>
+    <div class="page">
+        <div class="header">
+            <!-- 导航 -->
+            <div class="back-nav" @click="$router.back()">
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-nav_fanhui_baise"></use>
+                </svg>{{ msg }}
+            </div>
+        </div>
+        <div class="tab-bar">
+            <div class="tab-item selected"><span>全部</span></div>
+            <div class="tab-item"><span>门诊病历</span></div>
+            <div class="tab-item"><span>住院病历</span></div>
+            <div class="tab-item"><span>出院病历</span></div>
+        </div>
+        <div class="container">
+			<div v-for="(item,index) in data" :key="index">
+				<div class="item">
+					<div class="item-hd">门诊病历</div>
+					<!-- <router-link class="item-bd" tag="div" :to="{path:'/medicalRecordsDetail'}"> -->
+					<div class="item-bd">
+						<div>病历原始号：<span>{{item.RecordNo}}（{{item.RecordDate}}）</span></div>
+						<div>机构：<span>{{item.Hospital}}</span></div>
+						<div>科室：<span>{{item.CheckDep}}</span></div>
+					</div>
+					<!-- </router-link> -->
+					<div class="item-ft">
+						<div></div>
+						<div>报告人：<span>{{item.AttDoctor}}</span></div>
+					</div>
+				</div>
+				<div class="separate"></div>
+			</div>
+        </div>
+    </div>
+</template>
+
+<script>
+	import {GetMedicalRecordInfoList} from '../../api/medicalRecords';
+
+	export default {
+		name: "medicalRecordsHistory",
+		data() {
+			return {
+				msg: "就医记录",
+				data: []
+			}
+		},
+		created() {
+			GetMedicalRecordInfoList({
+				pkid: this.$router.currentRoute.params.id
+			}).then(res => {
+				this.data = res.data;
+			})
+		}
+	};
+</script>
+
+<style lang="scss" scoped>
+	@import "@/public/scss/common.scss";
+
+	.page {
+		@include body-bgColor();
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		.header {
+			.back-nav {
+				@include nav-top;
+			}
+		}
+		.container {
+			padding: 10px;
+			background-color: #eef1f6;
+			.item {
+				border-radius: 5px;
+				background-color: #ffffff;
+				.item-hd {
+					font-size: 18px;
+					height: 50px;
+					padding: 0 20px;
+					font-weight: bold;
+					background-color: #f4feec;
+					@include spacebetween;
+					&.type1 {
+						background-color: #f5ede1;
+					}
+					&.type2 {
+						background-color: #e8f4f8;
+					}
+				}
+				.item-bd {
+					padding: 20px 0;
+					@include fontsize15;
+					> div {
+						@include txt-light-gray;
+						> span {
+							@include txt-deep-gray;
+						}
+						padding: 0 20px 16px 20px;
+						&:last-child {
+							padding-bottom: 0;
+						}
+					}
+				}
+				.item-ft {
+					height: 45px;
+					line-height: 45px;
+					padding: 0 20px;
+					font-size: 14px;
+					@include spacebetween;
+					@include bd-top;
+					@include txt-light-gray;
+					.date {
+						color: #333333;
+					}
+					span {
+						@include txt-deep-gray;
+					}
+				}
+			}
+		}
+	}
+</style>

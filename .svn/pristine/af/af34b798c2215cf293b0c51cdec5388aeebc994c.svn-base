@@ -1,0 +1,138 @@
+/* A17待录每日作业 */
+<template>
+	<div class="page">
+        <div class="header">
+            <!-- 导航 -->
+            <div class="back-nav" @click="$router.back()">
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-nav_fanhui_baise"></use>
+                </svg>{{ msg }}
+            </div>
+        </div>
+		<div class="container">
+			<div class="date">作业日期：2018-06-30</div>
+            <div class="from-container">
+                <router-link tag="div" :to="{path:'/recordEditWork'}">
+                    <div><span>1</span>血压</div>
+                    <div>上午09:24</div>
+                </router-link>
+				<div class="void"></div>
+                <router-link tag="div" :to="{path:'/recordEditWork'}">
+                    <div><span>2</span>空腹血糖</div>
+                    <div>上午09:24</div>
+                </router-link>
+				<div class="void"></div>
+                <router-link tag="div" :to="{path:'/recordEditWork'}">
+                    <div><span>3</span>氧气治疗</div>
+                    <div>上午09:24</div>
+                </router-link>
+				<div class="void"></div>
+                <router-link tag="div" :to="{path:'/recordEditWork'}">
+                    <div><span>4</span>体重测量</div>
+                    <div>上午09:24</div>
+                </router-link>
+				<div class="void"></div>
+                <router-link tag="div" :to="{path:'/recordEditWork'}">
+                    <div><span>5</span>血压</div>
+                    <div>上午09:24</div>
+                </router-link>
+            </div>
+            <div class="separate"></div>
+		</div>
+        <div class="footer">
+			<router-link class="btn" tag="div" :to="{path:'recordQueryWork'}">作业查询</router-link>
+			<router-link class="btn" tag="div" :to="{path:'recordEditWork'}">布置作业</router-link>
+		</div>
+	</div>
+</template>
+
+<script>
+export default {
+	name: "recordIRH",
+	data() {
+		return {
+            msg: "今日作业",
+		};
+    },
+    created() {
+        console.log(this.msg)
+    },
+};
+</script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style lang="scss" scoped>
+    @import '@/public/scss/common.scss';
+
+	.page {
+        @include body-bgColor();
+        .header {
+            .back-nav {
+                @include nav-top;
+            }
+		}
+		.container {
+			.date {
+				height: 40px;
+				line-height: 40px;
+				padding: 0 15px;
+				color: #333333;
+				@include item-bgColor();
+				@include fontsize14;
+			}
+			.from-container {
+				padding: 20px 10px;
+				>div {
+					@include spacebetween();
+					@include item-bgColor();
+					@include itemWidth();
+					border-radius: 5px;
+					border: 1px solid #D9D9D9;
+					height: 64px;
+					padding: 0 53px 0 26px;
+					font-size: 19px;
+					@include deeper-gray;
+					span {
+						font-size: 24px;
+						color: #666666;
+						padding-right: 24px;
+					}
+					>div {
+						&:last-child {
+							width: 80px;
+							height: 24px;
+							line-height: 24px;
+							text-align: center;
+							@include fontsize14;
+							@include txt-deepgreen;
+							border-radius: 2px;
+							border: 1px solid #D9D9D9;
+						}
+					}
+				}
+				>.void {
+					height: 10px;
+					border: none;
+					background-color: transparent;
+				}
+			}
+		}
+		.footer {
+			@include flex;
+			@include bd-top;
+			@include fontsize18;
+			@include item-bgColor();
+			color: #057042;
+			height: 49px;
+			>div {
+				width: 50%;
+				line-height: 46px;
+				text-align: center;
+				&:last-child {
+					@include bd-left();
+				}
+			}
+		}
+	}
+
+</style>

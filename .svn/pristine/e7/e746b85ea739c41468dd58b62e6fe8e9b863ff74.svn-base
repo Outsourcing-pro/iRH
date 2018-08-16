@@ -1,0 +1,124 @@
+<template>
+	<div class="page">
+        <div class="header">
+            <!-- 导航 -->
+            <div class="back-nav" @click="$router.back()">
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-nav_fanhui_baise"></use>
+                </svg>{{ msg }}
+            </div>
+        </div>
+		<div class="container">
+            <div class="tag-item">
+                <div class="title">健康事件</div>
+                <div class="lables">
+                    <span @click="toDetail('all')">全部明细</span>
+                    <span @click="toDetail('jcmx')">检查明细</span>
+                    <span @click="toDetail('cfhz')">处方汇总</span>
+                    <span @click="toDetail('blhz')">病例汇总</span>
+                    <span @click="toDetail('zyhz')">作业汇总</span>
+                </div>
+            </div>
+            <div class="separate"></div>
+            <div class="tag-item">
+                <div class="title">健康管理</div>
+                <div class="lables">
+                    <span>非胰岛素依赖型糖尿病</span>
+                    <span>继发性高血压</span>
+                    <span>肺气肿</span>
+                    <span>结膜炎</span>
+                    <span>健康管理</span>
+                </div>
+            </div>
+            <div class="separate"></div>
+            <div class="tag-item">
+                <div class="title">生理参数</div>
+                <div class="lables">
+                    <span>血压</span>
+                    <span>空腹血糖</span>
+                    <span>餐后血糖</span>
+                    <span>随机血糖</span>
+                    <span>氧饱和度</span>
+                    <span>体温</span>
+                    <span>体重</span>
+                    <span>峰流速</span>
+                    <span>心率</span>
+                </div>
+            </div>
+            <div class="separate"></div>
+            <div class="tag-item">
+                <div class="title">就医记录</div>
+                <div class="lables">
+                    <span>全部</span>
+                    <span>住院记录</span>
+                    <span>门诊记录</span>
+                </div>
+            </div>
+            <div class="separate"></div>
+		</div>
+	</div>
+</template>
+
+<script>
+export default {
+	name: "PatientManagement",
+	data() {
+		return {
+            msg: "健康档案",
+		};
+    },
+    created() {
+        console.log(this.msg)
+    },
+    methods: {
+        toDetail(type) {
+            this.$router.push({path: `/healthEventList/${type}`})
+        },
+    }
+};
+</script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style lang="scss" scoped>
+    @import '@/public/scss/common.scss';
+
+	.page {
+        @include body-bgColor();
+        .header {
+            .back-nav {
+                @include nav-top;
+            }
+        }
+        .container {
+            .tag-item {
+                @include item-bgColor();
+                padding: 15px 0 5px;
+                .title {
+                    @include item-padding-between(10px);
+                    @include fontsize16();
+                    @include deeper-gray();
+                    @include bd-left-extend(3px, 15px, 4px, 10px, 33%);
+                    height: 32px;
+                    text-indent: 5px;
+                }
+                .lables {
+                    @include item-padding-between(12px);
+                    min-height: 30px;
+                    line-height: 30px;
+                    margin: 5px 0;
+                    >span {
+                        @include bd-color();
+                        @include fontsize14();
+                        @include txt-deep-gray();
+                        @include item-padding-between(13px);
+                        display: inline-block;
+                        border-radius: 3px;
+                        height: 30px;
+                        margin-bottom: 13px;
+                    }
+                }
+            }
+        }
+	}
+
+</style>

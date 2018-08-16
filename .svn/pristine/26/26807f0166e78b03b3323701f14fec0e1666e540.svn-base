@@ -1,0 +1,123 @@
+/* B首页_代劳 */
+<template>
+	<div class="page">
+        <div class="header">
+            <!-- 导航 -->
+            <div class="back-nav" @click="$router.back()">
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-nav_fanhui_baise"></use>
+                </svg>{{ msg }}
+                <svg class="icon add" aria-hidden="true">
+                    <use xlink:href="#icon-nav_xinzeng"></use>
+                </svg>
+            </div>
+        </div>
+		<div class="container">
+            <div class="item">
+                <div class="item-header">2017-08-16 14:31:51<span class="status1">未处理</span></div>
+                <router-link class="item-body" tag="div" :to="{path:'/replaceLaborDetail'}">
+                    <div>需代劳人：<span>金星星</span></div>
+                    <div>问题：<span>客户回访</span></div>
+                </router-link>
+            </div>
+            <div class="separate"></div>
+            <div class="item">
+                <div class="item-header">2017-08-16 14:31:51<span class="status">已完成</span></div>
+                <router-link class="item-body" tag="div" :to="{path:'/replaceLaborDetail'}">
+                    <div>需代劳人：<span>金星星</span></div>
+                    <div>问题：<span>客户回访</span></div>
+                </router-link>
+            </div>
+            <div class="separate"></div>
+            <div class="item">
+                <div class="item-header">2017-08-16 14:31:51<span class="status">已转iRH服务</span></div>
+                <router-link class="item-body" tag="div" :to="{path:'/replaceLaborDetail'}">
+                    <div>需代劳人：<span>金星星</span></div>
+                    <div>问题：<span>客户回访</span></div>
+                </router-link>
+            </div>
+            <div class="separate"></div>
+		</div>
+	</div>
+</template>
+
+<script>
+    export default {
+        name: "ReplaceLaborList",
+        data() {
+            return {
+                msg: "代劳",
+            };
+        },
+        created() {
+            console.log(this.msg)
+        },
+        methods: {
+            toHealthRecord() {
+                this.$router.push({path: '/healthRecord'})
+            }
+        }
+    };
+</script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style lang="scss" scoped>
+    @import '@/public/scss/common.scss';
+
+	.page {
+        @include body-bgColor();
+        .header {
+            .back-nav {
+                @include nav-top;
+                .add {
+                    
+                }
+            }
+        }
+		.container {
+            @include item-padding-between;
+            height: calc(100vh - 44px);
+            padding-top: 16px;
+            overflow-y: auto;
+            .item {
+                @include border-radius;
+                @include item-bgColor;
+                @include bd-color;
+                overflow: hidden;
+                line-height: 1;
+                .item-header {
+                    height: 50px;
+                    background-color: #F5F5F5;
+                    padding: 0 16px 0 20px;
+                    @include deeper-gray;
+                    @include spacebetween;
+                    @include fontsize18;
+                    .status,
+                    .status1 {
+                        @include fontsize15;
+                        @include txt-light-gray();
+                    }
+                    .status1 {
+                        color: #F62F2F;
+                    }
+                }
+                .item-body {
+                    padding: 0 20px;
+                    @include fontsize15;
+                    >div {
+                        @include txt-light-gray;
+                        >span {
+                            @include txt-deep-gray;
+                        }
+                        &:first-child {
+                            margin-top: 20px;
+                        }
+                        &:last-child {
+                            margin:  16px 0 25px 0;
+                        }
+                    }
+                }
+            }
+		}
+	}
+</style>

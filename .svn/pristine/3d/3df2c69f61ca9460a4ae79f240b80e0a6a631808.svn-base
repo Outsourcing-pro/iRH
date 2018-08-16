@@ -1,0 +1,110 @@
+/* D3分类管理 */
+<template>
+    <div class="page">
+        <div class="header">
+            <!-- 导航 -->
+            <div class="back-nav" @click="$router.back()">
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-nav_fanhui_baise"></use>
+                </svg>{{ msg }}
+            </div>
+        </div>
+        <div class="group" @click="groupEdit('add')">新建分组</div>
+        <div class="container">
+            <div class="item">我的好友
+                <div><span class="btn" @click="groupEdit('edit')">编辑</span><span class="btn">删除</span></div>
+            </div>
+            <div class="item">医生
+                <div><span class="btn">编辑</span><span class="btn">删除</span></div>
+            </div>
+            <div class="item">护士
+                <div><span class="btn">编辑</span><span class="btn">删除</span></div>
+            </div>
+        </div>
+
+        <!-- <group-edit></group-edit> -->
+    </div>
+</template>
+
+<script>
+    import groupEdit from './child/group-edit';
+
+	export default {
+		name: "medicalAid",
+		data() {
+			return {
+                msg: "分类管理",
+			}
+		},
+		created() {
+
+        },
+        methods: {
+            groupEdit(type, obj) {
+
+            }
+        },
+        components: {
+            groupEdit
+        }
+	};
+</script>
+
+<style lang="scss" scoped>
+	@import "@/public/scss/common.scss";
+
+	.page {
+		@include body-bgColor();
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		.header {
+			.back-nav {
+				@include nav-top;
+                .btn {
+                    position: absolute;
+                    right: 15px;
+                    top: 0;
+                    bottom: 0;
+                    width: 64px;
+                    line-height: 44px;
+                    @include fontsize16;
+                }
+			}
+		}
+		.group {
+			height: 50px;
+			line-height: 50px;
+            text-align: center;
+            margin: 12px 0;
+            font-size: 17px;
+            color: #057042;
+			background-color: #ffffff;
+		}
+		.container {
+			background-color: #eef1f6;
+            height: calc(100vh - 118px);
+			.item {
+				border-radius: 5px;
+                height: 50px;
+                padding: 0 5px 0 17px;
+				background-color: #ffffff;
+                @include spacebetween();
+                @include bd-bottom(16px);
+                .btn {
+                    display: inline-block;
+                    width: 48px;
+                    height: 24px;
+                    text-align: center;
+                    color: #666666;
+                    @include fontsize16;
+                    border-radius: 2px;
+                    margin-right: 10px;
+                    border: 1px solid #D4D4D4;
+                }
+            }
+		}
+	}
+</style>

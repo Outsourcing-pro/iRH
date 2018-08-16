@@ -1,0 +1,228 @@
+<template>
+	<div class="page">
+        <div class="header">
+            <!-- 导航 -->
+            <div class="back-nav" @click="$router.back()">
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-nav_fanhui_baise"></use>
+                </svg>{{ msg }}
+            </div>
+            <!-- 筛选 -->
+            <div class="filter">
+                <div class="filter">全部
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-xialakuangjiantou"></use>
+                    </svg>
+                </div>
+            </div>
+            <div class="separate"></div>
+            <div class="date">
+                日期选择
+            </div>
+            <div class="separate"></div>
+        </div>
+		<div class="container">
+            <div class="list" v-if="isAll">
+
+                <div class="item">
+                    <div class="title">
+                        <span class="name">检查</span>
+                        <span class="date">2018-7-2</span>
+                    </div>
+                    <div class="main-info">
+                        <div class="top">
+                            <div>
+                                <span class="name">场所：</span>
+                                <span class="info">居家</span>
+                            </div>
+                            <div>
+                                <span class="name">数据信息：</span>
+                                <span class="info">血常规</span>
+                            </div>
+                        </div>
+                        <div class="bottom">
+                            <div>
+                                <span class="name">档案来源：</span>
+                                <span class="info">省人民医院呼吸科省人民医院呼吸科省人民医院呼吸科省人民医院呼吸科省人民医院呼吸科省人民医院呼吸科</span>
+                            </div>
+                            <div>
+                                <span class="name">档案编号：</span>
+                                <span class="info">4526822582</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="separate"></div>
+            </div>
+            <div class="list">
+
+                <div class="item">
+                    <div class="title">
+                        <span class="name">特发性(原发性)高血压</span>
+                        <span class="annex">附件</span>
+                    </div>
+                    <div class="main-info">
+                        <div class="separate"></div>
+                        <div class="details">
+                            <span class="name">就诊日期：</span>
+                            <span class="info">2018-7-3</span>
+                        </div>
+                        <div class="details">
+                            <span class="name">场所：</span>
+                            <span class="info">居家</span>
+                        </div>
+                        <!-- 需要控制显示和隐藏的部分 -->
+                        <div class="">
+                            <div class="details">
+                                <span class="name">诊断结论：</span>
+                                <span class="info">很健康</span>
+                            </div>
+                            <div class="details">
+                                <span class="name">病历号：</span>
+                                <span class="info">6541252</span>
+                            </div>
+                            <div class="details">
+                                <span class="name">医院/科室：</span>
+                                <span class="info">省人民医院/呼吸科</span>
+                            </div>
+                        </div>
+                        <div class="separate"></div>
+                        <div class="show-all">
+                            展开
+                            <svg class="icon" aria-hidden="true">
+                                <use xlink:href="#icon-xialakuangjiantou"></use>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <div class="separate"></div>
+            </div>
+		</div>
+	</div>
+</template>
+
+<script>
+
+export default {
+    name: "HealthEventList",
+	data() {
+		return {
+            msg: "健康事件",
+            isAll: true
+		};
+    },
+    created() {
+        console.log(this.msg)
+    },
+    methods: {
+    }
+};
+</script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style lang="scss" scoped>
+    @import '@/public/scss/common.scss';
+
+	.page {
+        @include body-bgColor();
+        .header {
+            .icon {
+                width: 15px;
+                height: 15px;
+            }
+            .back-nav {
+                @include nav-top;
+            }
+            .filter {
+                @include item-bgColor();
+                @include flex-center();
+                @include deeper-gray();
+                font-size: 16px;
+                height: 40px;
+            }
+            .date {
+                @include item-bgColor();
+                @include item-margin(0, 10px, 0, 10px);
+                @include border-radius();
+                height: 40px;
+            }
+        }
+        .container {
+            .list {
+                .item {
+                    @include item-bgColor();
+                    @include border-radius();
+                    @include bd-color();
+                    @include item-margin(0, 10px, 0, 10px);
+                    .title {
+                        @include bd-left-extend(2px);
+                        @include bd-bottom();
+                        @include spacebetween();
+                        @include item-padding-between(20px);
+                        @include itemHeight();
+                        .name {
+                            @include deeper-gray();
+                            @include fontsize18();
+                        }
+                        .date {
+                            @include txt-light-gray();
+                            @include fontsize14();
+                        }
+                        .annex {
+                            width: 45px;
+                            height: 27px;
+                            line-height: 27px;
+                            text-align: center;
+                            background-color: #e0e0e0;
+                            color: #888888;
+                            border-radius: 5px;
+                            font-size: 15px;
+                        }
+                    }
+                    .main-info {
+                        @include fontsize14();
+                        @include item-padding-between();
+                        >div>div {
+                            @include flex();
+                            min-height: 24px;
+                            line-height: 24px;
+                            &:last-child {
+                                margin-top: 5px;
+                            }
+                        }
+                        .top {
+                            @include bd-bottom();
+                        }
+                        .top,
+                        .bottom {
+                            padding: 15px 0;
+                        }
+                        .name {
+                            @include txt-light-gray();
+                            min-width: 70px;
+                        }
+                        .info {
+                            @include deeper-gray();
+                        }
+                        .details {
+                            height: 24px;
+                        }
+                        .show-all {
+                            @include bd-top();
+                            font-size: 13px;
+                            height: 40px;
+                            line-height: 40px;
+                            text-align: center;
+                            color: #888888;
+                            .icon {
+                                width: 10px;
+                                height: 10px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+	}
+
+</style>

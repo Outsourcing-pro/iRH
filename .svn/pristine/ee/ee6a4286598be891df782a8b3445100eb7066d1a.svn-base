@@ -1,0 +1,11 @@
+const base = {
+    // 服务端返回成功的状态码
+    errok: 200,
+    config: {
+		duration_X: 300, // 动画持续时长
+		duration: 300,
+		duration_S: 150
+	}
+}
+
+export default base;

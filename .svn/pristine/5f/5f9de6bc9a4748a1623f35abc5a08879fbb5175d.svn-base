@@ -1,0 +1,148 @@
+import axios from './axios-j'
+
+//登录
+export function UserLogin(params){
+	return axios.ajax('/Login/UserLogin', params);
+}
+
+/* A13健康档案_就医记录 */
+//获取就诊记录列表
+export function GetMyPatientMedicalRecordsList(params){
+	return axios.cajax('/MyPatientHealthMedicalRecords/GetMyPatientMedicalRecordsList', params);
+}
+// //获取就诊记录详情
+export function GetMyPatientMedicalRecords(params){
+    return axios.ajax('/MyPatientHealthMedicalRecords/GetMyPatientMedicalRecords', params);
+}
+//获取就诊记录详情-获取病历列表
+export function GetMedicalRecordInfoList(params){
+    return axios.ajax('/MyPatientHealthMedicalRecords/GetMedicalRecordInfoList', params);
+}
+// //获取就诊记录列表-获取病历详情
+// export function GetMedicalRecordInfo(params){
+//     return axios.ajax('/MyPatientHealthMedicalRecords/GetMedicalRecordInfo', params);
+// }
+//获取就诊记录列表-获取检查列表
+export function GetHealthEventCheckList(params){
+    return axios.ajax('/MyPatientHealthMedicalRecords/GetHealthEventCheckList', params);
+}
+// //获取就诊记录列表-获取检查详情
+// export function GetHealthEventCheckInfo(params){
+//     return axios.ajax('/MyPatientHealthMedicalRecords/GetHealthEventCheckInfo', params);
+// }
+//获取就诊记录列表-获取处方列表
+export function GetHealthEventPrescriptionList(params){
+    return axios.ajax('/MyPatientHealthMedicalRecords/GetHealthEventPrescriptionList', params);
+}
+// //获取就诊记录列表-获取处方详情
+// export function GetHealthEventPrescriptionInfo(params){
+//     return axios.ajax('/MyPatientHealthMedicalRecords/GetHealthEventPrescriptionInfo', params);
+// }
+
+/* A15患者管理_待录弹窗 */
+
+/* 代劳 */
+//代劳患者列表
+export function MyCustomerList(params){
+    return axios.ajax('/MyPatientIRHService/MyCustomerList', params);
+}
+//IRH代录服务
+export function AddFeedback(params){
+    return axios.ajax('/MyPatientServiceRecord/AddFeedback', params);
+}
+//获取代劳列表
+export function GetIRHServiceList(params){
+    return axios.ajax('/MyPatientIRHService/GetIRHServiceList', params);
+}
+
+/* 每日作业 */
+//作业列表
+export function GetMyHomeworkList(params){
+    return axios.ajax('/MyPatientServiceRecord/GetMyHomeworkList', params);
+}
+//作业所有项目
+export function GetHomeworkProjectItem(params){
+    return axios.ajax('/MyPatientServiceRecord/GetHomeworkProjectItem', params);
+}
+//布置作业
+export function AddHomeWork(params){
+    return axios.ajax('/MyPatientServiceRecord/AddHomeWork', params);
+}
+//编辑作业
+export function GetHomeWorkFormFieldList(params){
+    return axios.ajax('/MyPatientServiceRecord/GetHomeWorkFormFieldList', params);
+}
+//保存患者某个作业表单数据 post
+export function SaveHomeWorkData(params){
+    return axios.ajax('/MyPatientServiceRecord/SaveHomeWorkData', params);
+}
+
+/* 我的备忘录 */
+//获取我的备忘录
+export function GetPatientNoteList(params){
+    return axios.ajax('/MyPatientNote/GetPatientNoteList', params);
+}
+//保存备忘录
+export function SavePatientNote(params){
+    return axios.ajax('/MyPatientNote/SavePatientNote', params);
+}
+//删除备忘录
+export function DeletePatientNote(params){
+    return axios.ajax('/MyPatientNote/DeletePatientNote', params);
+}
+//获取备忘录详情
+export function GetPatientNoteInfo(params){
+    return axios.ajax('/MyPatientNote/GetPatientNoteInfo', params);
+}
+
+/* D3分类管理 */
+
+/* D4联系 */
+
+
+/* 患者咨询 */
+//患者咨询列表
+export function GetContactPatientList(params){
+    return axios.ajax('/MyPatient/GetContactPatientList', params);
+}
+//获取我的患者详情
+export function GetContactPatientInfo(params){
+    return axios.ajax('/MyPatient/GetContactPatientInfo', params);
+}
+//所有药品及设备列表
+export function GetAllDeviceDrugFoodList(params){
+    return axios.ajax('/MyPatientDeviceAndDrug/GetAllDeviceDrugFoodList', params);
+}
+//获取药品与设备的详情
+export function GetDeviceDrugFoodInfo(params){
+    return axios.ajax('/MyPatientDeviceAndDrug/GetDeviceDrugFoodInfo', params);
+}
+//获取患者申请列表
+export function GetApplyPatientList(params){
+    return axios.ajax('/MyPatient/GetApplyPatientList', params);
+}
+
+/* E患者咨询 */
+
+/* F患者申请 */
+
+/* N我的好友 */
+
+
+/* 关注我的 */
+
+
+
+/* 我的消息 */
+//获取我的消息
+export function GetMyMessageList(params){
+    return axios.ajax('/MyMessage/GetMyMessageList', params);
+}
+//获取我的公告通知
+export function GetMyNoticeList(params){
+    return axios.ajax('/MyMessage/GetMyNoticeList', params);
+}
+//获取我的消息详情
+export function GetMsgInfo(params){
+    return axios.ajax('/MyMessage/GetMsgInfo', params);
+}

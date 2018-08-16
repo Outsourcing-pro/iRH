@@ -1,0 +1,172 @@
+/* F患者信息
+P2患者信息
+E3患者信息
+ */
+<template>
+	<div class="page">
+        <div class="header">
+            <!-- 导航 -->
+            <div class="back-nav" @click="$router.back()">
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-nav_fanhui_baise"></use>
+                </svg>{{ msg }}
+            </div>
+        </div>
+		<div class="container" :class="type==1?'type1':'type2'">
+			<div>
+				<div class="from-item-single">
+					<div>
+						<div>账号</div>
+						<div>adf3212</div>
+					</div>
+					<div>
+						<div>昵称</div>
+						<div>刘红梅</div>
+					</div>
+					<div>
+						<div>性别</div>
+						<div>女</div>
+					</div>
+					<div>
+						<div>生日</div>
+						<div>1994-10-12</div>
+					</div>
+					<div>
+						<div>职业</div>
+						<div>无</div>
+					</div>
+					<div>
+						<div>职务</div>
+						<div>无</div>
+					</div>
+					<div>
+						<div>学历</div>
+						<div>大专</div>
+					</div>
+                    <div>
+						<div>职称</div>
+						<div>无</div>
+					</div>
+				</div>
+				<div class="separate"></div>
+				<div class="from-item-multi">
+					<div>签名</div>
+					<div>无</div>
+				</div>
+				<div class="separate"></div>
+				<div class="from-item-multi">
+					<div>个人简历</div>
+					<div>无</div>
+				</div>
+				<div class="separate"></div>
+				<div class="from-item-multi">
+					<div>所属地</div>
+					<div>湖南省.长沙.雨花区</div>
+				</div>
+			</div>
+			<div class="separate"></div>
+		</div>
+        <div class="footer" v-if="type==1">
+            <div @click="reject">拒绝</div>
+            <div @click="agree">同意</div>
+        </div>
+	</div>
+</template>
+
+<script>
+    export default {
+        name: "CaseHistoryDetail",
+        data() {
+            return {
+                msg: "患者信息",
+                type: 1, //1是F患者申请P2患者信息,2是E3患者信息
+                photo: require("@/public/images/swiper3.jpg"),
+            };
+        },
+        computed: {
+        },
+        created() {
+            this.type = this.$router.currentRoute.params.type;
+        },
+        methods: {
+            reject() {
+
+            },
+            agree() {
+
+            }
+        }
+    };
+</script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style lang="scss" scoped>
+    @import "@/public/scss/common.scss";
+
+    .page {
+        @include body-bgColor();
+
+        .header {
+            .back-nav {
+                @include nav-top;
+            }
+        }
+        .container {
+            overflow-y: auto;
+            &.type1 {
+                height: calc(100vh - 93px);
+            }
+            &.type2 {
+                height: calc(100vh - 44px);
+            }
+            .list {
+                margin: 0 10px;
+                .item {
+                    @include item-bgColor();
+                    @include flex();
+                    flex-direction: column;
+                    justify-content: center;
+                    padding: 15px 20px;
+                    border-radius: 5px;
+                    min-height: 80px;
+                    .title {
+                        @include fontsize18();
+                        @include deeper-gray();
+                    }
+                    .date {
+                        @include fontsize15();
+                        color: #888888;
+                        margin-top: 5px;
+                        >span{
+                            &:last-child {
+                                @include deeper-gray();
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .footer {
+            height: 49px;
+            font-size: 17px;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            @include flex();
+            div {
+                flex: 1;
+                line-height: 49px;
+                text-align: center;
+                &:first-child {
+                    background-color: #ffffff;
+                    color: #7BCF33;
+                }
+                &:last-child {
+                    background-color: #7BCF33;
+                    color: #ffffff;
+                }
+            }
+        }
+    }
+</style>

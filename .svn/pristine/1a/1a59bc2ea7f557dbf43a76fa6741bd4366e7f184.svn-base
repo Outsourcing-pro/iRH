@@ -1,0 +1,167 @@
+/* B首页_代劳 */
+<template>
+	<div class="page">
+        <div class="header">
+            <!-- 导航 -->
+            <div class="back-nav" @click="$router.back()">
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-nav_fanhui_baise"></use>
+                </svg>{{ msg }}
+                <svg class="icon add" aria-hidden="true">
+                    <use xlink:href="#icon-nav_xinzeng"></use>
+                </svg>
+            </div>
+        </div>
+		<div class="container">
+            <div class="item">
+                <div class="item-header">2017-08-16 14:31:51<span class="status1">未处理</span></div>
+                <router-link class="item-body" tag="div" :to="{path:'/replaceLaborDetail'}">
+                    <div>需代劳人：<span>金星星</span></div>
+                    <div>问题：<span>客户回访</span></div>
+                </router-link>
+            </div>
+            <div class="separate"></div>
+            <div class="item">
+                <div class="item-header">2017-08-16 14:31:51<span class="status">已完成</span></div>
+                <router-link class="item-body" tag="div" :to="{path:'/replaceLaborDetail'}">
+                    <div>需代劳人：<span>金星星</span></div>
+                    <div>问题：<span>客户回访</span></div>
+                </router-link>
+            </div>
+            <div class="separate"></div>
+            <div class="item">
+                <div class="item-header">2017-08-16 14:31:51<span class="status">已转iRH服务</span></div>
+                <router-link class="item-body" tag="div" :to="{path:'/replaceLaborDetail'}">
+                    <div>需代劳人：<span>金星星</span></div>
+                    <div>问题：<span>客户回访</span></div>
+                </router-link>
+            </div>
+            <div class="separate"></div>
+		</div>
+        <action-sheet>sssssss</action-sheet>
+	</div>
+</template>
+
+<script>
+    export default {
+        name: "ReplaceLaborList",
+        data() {
+            return {
+                msg: "代劳",
+            };
+        },
+        created() {
+            console.log(this.msg)
+        },
+        methods: {
+            toHealthRecord() {
+                this.$router.push({path: '/healthRecord'})
+            }
+        }
+    };
+</script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style lang="scss" scoped>
+    @import '@/public/scss/common.scss';
+
+	.page {
+        @include body-bgColor();
+        .header {
+            .back-nav {
+                @include nav-top;
+                .add {
+                    
+                }
+            }
+        }
+		.container {
+            @include item-padding-between;
+            height: calc(100vh - 44px);
+            padding-top: 16px;
+            overflow-y: auto;
+            .item {
+                @include border-radius;
+                @include item-bgColor;
+                @include bd-color;
+                overflow: hidden;
+                line-height: 1;
+                .item-header {
+                    height: 50px;
+                    background-color: #F5F5F5;
+                    padding: 0 16px 0 20px;
+                    @include deeper-gray;
+                    @include spacebetween;
+                    @include fontsize18;
+                    .status,
+                    .status1 {
+                        @include fontsize15;
+                        @include txt-light-gray();
+                    }
+                    .status1 {
+                        color: #F62F2F;
+                    }
+                }
+                .item-body {
+                    padding: 0 20px;
+                    @include fontsize15;
+                    >div {
+                        @include txt-light-gray;
+                        >span {
+                            @include txt-deep-gray;
+                        }
+                        &:first-child {
+                            margin-top: 20px;
+                        }
+                        &:last-child {
+                            margin:  16px 0 25px 0;
+                        }
+                    }
+                }
+            }
+        }
+        
+        /* 给矩形一个1px实心颜色rgb为#E4E4E2的边框 */
+        .operate-box {
+            width: 144px;
+            height: 135px;
+            border: 1px solid #E4E4E2;
+            position: relative;
+        }
+        /* 上下透明，右边框为10px */
+        .operate-box:before {
+            content: '';
+            position: absolute;
+            top: -9px;
+            right: 40px;
+            width: 0;
+            height: 0;
+            border-right: 10px solid transparent;
+            border-bottom: 10px solid #E4E4E2;
+            border-left: 10px solid transparent;
+        }
+        /* 上下透明，右边框为9px且在:before伪元素三角形的基础上，向右，下移动了1px */
+        .operate-box:after {
+            content: '';
+            position: absolute;
+            top: -8px;
+            right: 41px;
+            width: 0;
+            height: 0;
+            border-right: 9px solid transparent;
+            border-left: 9px solid transparent; 
+            border-bottom: 9px solid #fff;
+        }
+        .operate-box div {
+            height: 45px;
+            line-height: 45px;
+            text-align: center;
+            border-bottom: 1px solid #E6E6E6;
+            color: #212121;
+            font-size: 17px;
+        }
+        .operate-box div:last-child {
+            border-bottom: none;
+        }
+	}
+</style>

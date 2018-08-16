@@ -1,0 +1,146 @@
+/* 患者咨询 */
+<template>
+    <div class="page">
+        <div class="header">
+            <!-- 导航 -->
+            <div class="back-nav" @click="$router.back()">
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-nav_fanhui_baise"></use>
+                </svg>{{ msg }}
+            </div>
+        </div>
+        <div class="container">
+            <div class="nav-bar">
+                <router-link tag="div" :to="{path:'/patientApply'}">
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-label_huanzhezixun_xiangying"></use>
+                    </svg>患者申请
+                </router-link>
+                <router-link tag="div" :to="{path:'/irhhome'}">
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-label_huanzhezixun_xiangying"></use>
+                    </svg>iRH之家
+                </router-link>
+            </div>
+            <router-link tag="div" :to="{path:`/chat/${item.FK_CustID}`}" class="item" v-for="(item,index) in data" :key="index">
+                <div class="photo" :style="'backgroundImage: url('+ item.UserHead +')'"></div>
+                <div class="detail">
+                    <div><div>xxxxx医生<span class="tag" v-if="item.bSpecial==1">重点关注</span></div><div class="date">{{item.dSendTime}}</div></div>
+                    <div class="txt-hide">{{item.sContent}}</div>
+                </div>
+            </router-link>
+            <!-- <router-link tag="div" :to="{path:'/chat/2'}" class="item">
+                <div class="photo" :style="'backgroundImage: url('+ photo +')'"></div>
+                <div class="detail">
+                    <div><div>王涛医生<span class="tag">重点关注</span></div><div class="date">2018/1/27 15:54:25</div></div>
+                    <div class="txt-hide">近期有到医院检查过吗，有没有以前的...</div>
+                </div>
+            </router-link> -->
+        </div>
+    </div>
+</template>
+
+<script>
+	import {GetContactPatientList} from '../../api/interface';
+
+	export default {
+		name: "PatientConsult",
+		data() {
+			return {
+                msg: "患者咨询",
+                photo: require("@/public/images/swiper3.jpg"),
+                data: []
+			}
+		},
+		created() {
+            GetContactPatientList().then(res => {
+                this.data = res.data;
+            })
+        },
+        methods: {
+            // sortManage() {
+            //     this.$router.push({path: `sortManage`})
+            // }
+        }
+	};
+</script>
+
+<style lang="scss" scoped>
+	@import "@/public/scss/common.scss";
+
+	.page {
+		@include body-bgColor();
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		.header {
+			.back-nav {
+				@include nav-top;
+			}
+		}
+		.container {
+            // height: calc(100vh - 153px);
+			background-color: #eef1f6;
+            .nav-bar {
+                padding: 0 5px;
+                @include flex;
+                >div {
+                    flex: 1;
+                    height: 83px;
+                    margin: 10px 5px;
+                    border-radius: 5px;
+                    font-size: 17px;
+                    @include flex-center;
+                    @include item-bgColor;
+                    @include deeper-gray;
+                    svg {
+                        margin-right: 20px;
+                        width: 26px;
+                        height: 26px;
+                    }
+                }
+            }
+			.item {
+				border-radius: 5px;
+                height: 85px;
+                padding: 0 12px;
+				background-color: #ffffff;
+				@include flex();
+                @include align-item();
+                @include bd-bottom(77px,#F8F8F8);
+                .detail {
+                    flex: 1;
+                    > div {
+                        margin-left: 11px;
+                        line-height: 1;
+                        &:first-child {
+                            color: #333333;
+                            font-size: 17px;
+                            @include spacebetween();
+                            .tag {
+                                display: inline-block;
+                                color: #ffffff;
+                                padding: 5px 7px;
+                                margin-left: 7px;
+                                border-radius: 2px;
+                                font-size: 12px;
+                                background-color: #7BCF33;
+                            }
+                            .date {
+                                color: #BABABA;
+                                font-size: 12px;
+                            }
+                        }
+                        &:last-child {
+                            margin-top: 12px;
+                            color: #888888;
+                            font-size: 14px;
+                        }
+                    }
+                }
+			}
+		}
+	}
+</style>

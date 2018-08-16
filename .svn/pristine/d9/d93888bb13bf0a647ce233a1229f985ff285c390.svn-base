@@ -1,0 +1,90 @@
+<template>
+	<div class="page">
+        <div class="header">
+            <!-- 导航 -->
+            <div class="back-nav" @click="$router.back()">
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-nav_fanhui_baise"></use>
+                </svg>{{ msg }}
+                <span class="btn">保存</span>
+            </div>
+        </div>
+		<div class="container">
+            <div class="from-item-single">
+                <div>
+                    <div class="name">需代劳人</div>
+                    <div class="name"><input type="text"/></div>
+                </div>
+                <div>
+                    <div>作业类型</div>
+                    <div>男</div>
+                </div>
+                <div>
+                    <div>作业项目</div>
+                    <div>男</div>
+                </div>
+                <div>
+                    <div>开始时间</div>
+                    <div>男</div>
+                </div>
+                <div>
+                    <div>结束时间</div>
+                    <div>男</div>
+                </div>
+                <div>
+                    <div>开始日期</div>
+                    <div>男</div>
+                </div>
+                <div>
+                    <div>结束日期</div>
+                    <div>男</div>
+                </div>
+            </div>
+            <div class="separate"></div>
+            <div class="from-item-multi">
+                <div>备注</div>
+                <div>
+                    <textarea placeholder="请输入备注信息"></textarea>
+                </div>
+            </div>
+		</div>
+	</div>
+</template>
+
+<script>
+export default {
+	name: "recordIRH",
+	data() {
+		return {
+            msg: "布置作业",
+		};
+    },
+    created() {
+        console.log(this.msg)
+    },
+};
+</script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style lang="scss" scoped>
+    @import '@/public/scss/common.scss';
+
+	.page {
+        @include body-bgColor();
+        .header {
+            .back-nav {
+                @include nav-top;
+                .btn {
+                    position: absolute;
+                    right: 15px;
+                    top: 0;
+                    bottom: 0;
+                    width: 30px;
+                    line-height: 44px;
+                    @include fontsize14;
+                }
+            }
+        }
+	}
+
+</style>

@@ -1,0 +1,97 @@
+/* 字体 */
+
+@mixin fontsize13 {
+	font-size: 13px;
+}
+@mixin fontsize15 {
+	font-size: 15px;
+}
+@mixin fontsize16 {
+	font-size: 16px;
+}
+@mixin fontsize18 {
+	font-size: 18px;
+}
+
+/* 线条 */
+@mixin bd-color {
+	position: relative;
+	width: 100%;
+	&::before {
+		content: '';
+		position: absolute;
+		width: 100%;
+		top: 0;
+		border-top: 1px solid #d9d9d9;
+	}
+}
+
+
+/* 	布局 */
+
+@mixin itempadding {
+	padding: 0  15px,	
+}
+
+/*  对齐方式：
+	x,水平方向
+	y,垂直方向
+*/
+@mixin flex {
+	display: flex;
+}
+@mixin xCenter {
+	@include flex();
+	justify-content: center
+}
+@mixin yCenter {
+	@include flex();
+	align-items: center;
+}
+
+/* 水平布局 */
+@mixin spacebetween {
+	@include flex();
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+}
+@mixin spacearound {
+	@include flex();
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: center
+}
+@mixin spaceevenly {
+	@include flex();
+	flex-direction: row;
+	justify-content: space-evenly;
+	align-items: center
+}
+
+/* 垂直布局 */
+@mixin flex-column {
+	@include flex();
+	flex-direction: column;
+	justify-content: center;
+	align-items: center
+}
+
+@mixin flexitem {
+	background: $item-bg-color;
+}
+
+/* 页面背景色 */
+@mixin body-bg-color {
+	background-color: rgba(240, 239, 243, 1);
+}
+/* 列表中item的背景色 */
+@mixin item-bg-color {
+	background-color: rgba(255, 255, 255, 1);
+}
+
+/* 底部导航通用样式 */
+@mixin nav-bar {
+	width: 100%;
+	height: 49px;
+}

@@ -1,0 +1,183 @@
+/* A4-1门诊病历病历详情 */
+<template>
+	<div class="page">
+        <div class="header">
+            <!-- 导航 -->
+            <div class="back-nav" @click="$router.back()">
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-nav_fanhui_baise"></use>
+                </svg>{{ msg }}
+            </div>
+        </div>
+		<div class="container">
+			<!-- 个人信息概要 -->
+			<div class="person-info">
+				<div class="left">
+					<div class="photo" :style="'backgroundImage: url('+ photo +')'"></div>
+					<div class="name">
+						<div>张大生</div>
+						<div>门诊号：15258624</div>
+					</div>
+				</div>
+				<div class="right">
+					患者详情
+					<svg class="icon" aria-hidden="true">
+						<use xlink:href="#icon-jiantou-you"></use>
+					</svg>
+				</div>
+			</div>
+			<div class="separate"></div>
+            <div class="from-item-single">
+                <div>
+                    <div>治疗病种</div>
+                    <div>继发性高血压，肺气肿</div>
+                </div>
+                <div>
+                    <div>病历原始号</div>
+                    <div>62534678928374</div>
+                </div>
+                <div>
+                    <div>iRH扫描件编号</div>
+                    <div>sdw123456</div>
+                </div>
+                <div>
+                    <div>医院</div>
+                    <div>湘雅附二医院</div>
+                </div>
+                <div>
+                    <div>科室</div>
+                    <div>呼吸内科</div>
+                </div>
+                <div>
+                    <div>主治医生</div>
+                    <div>吴医生</div>
+                </div>
+                <div>
+                    <div>门诊日期</div>
+                    <div>2018-7-4</div>
+                </div>
+            </div>
+            <div class="separate"></div>
+            <div class="from-item-multi">
+				<div>主述</div>
+				<div>无</div>
+            </div>
+			<div class="separate"></div>
+			<div class="from-item-multi">
+				<div>病史</div>
+				<div>病人无不良病史</div>
+			</div>
+			<div class="separate"></div>
+			<div class="from-item-multi">
+				<div>体检</div>
+				<div>健康</div>
+			</div>
+			<div class="separate"></div>
+			<div class="from-item-multi">
+				<div>实验室及特殊检查</div>
+				<div>无</div>
+			</div>
+			<div class="separate"></div>
+			<div class="from-item-multi">
+				<div>初步诊断</div>
+				<div>高血压病</div>
+			</div>
+			<div class="separate"></div>
+			<div class="from-item-multi">
+				<div>处理意见</div>
+				<div>无</div>
+            </div>
+            <div class="separate"></div>
+
+			<!-- 附件 -->
+			<div class="annex">
+				<div>附件</div>
+				<div>查看</div>
+			</div>
+			<div class="separate"></div>
+		</div>
+	</div>
+</template>
+
+<script>
+export default {
+	name: "CaseHistoryDetail",
+	data() {
+		return {
+            msg: "门诊病历",
+			photo: require('@/public/images/swiper3.jpg')
+		};
+    },
+    created() {
+        console.log(this.msg)
+    },
+};
+</script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style lang="scss" scoped>
+    @import '@/public/scss/common.scss';
+
+	.page {
+        @include body-bgColor();
+        
+        .header {
+            .back-nav {
+                @include nav-top;
+            }
+		}
+		.container {
+			height: calc(100vh - 44px);
+			overflow-y: auto;
+			.annex {
+				@include item-bgColor();
+				@include item-padding-between();
+				@include spacebetween();
+				height: 50px;
+				:last-child {
+					width: 70px;
+					height: 30px;
+					background-color: #EFEFF4;
+					text-align: center;
+					line-height: 30px;
+					color: #05703D;
+					font-size: 16px;
+					border: 1px solid #05703D;
+					border-radius: 2px;
+					box-sizing: content-box;
+				}
+			}
+			.person-info {
+				@include item-bgColor();
+				@include item-padding-between();
+				@include spacebetween();
+				height: 80px;
+				.left {
+					@include flex();
+					@include align-item();
+					.photo {
+						@include photo(60px, 60px);
+					}
+					.name {
+						>div {
+							margin-left: 12px;
+							&:first-child {
+								@include fontsize18();
+								color: #333333;
+							}
+							&:last-child {
+								@include fontsize15();
+								color: #666666;
+							}
+						}
+					}
+				}
+				.right {
+					@include fontsize16();
+					color: #888888;
+				}
+			}
+		}
+	}
+
+</style>

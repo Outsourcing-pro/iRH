@@ -1,0 +1,42 @@
+import axios from './axios-j'
+
+//登录
+// axios.get('http://120.76.200.217:7080/Login/UserLogin').then(res => {
+//   console.log(res);
+// })
+export function UserLogin(params){
+	return axios.ajax('http://120.76.200.217:7080/Login/UserLogin', params);
+}
+//获取就诊记录列表
+export function GetMyPatientMedicalRecordsList(params){
+	return axios.cajax('http://120.76.200.217:7080/MyPatientHealthMedicalRecords/GetMyPatientMedicalRecordsList', params);
+}
+// //获取就诊记录详情
+export function GetMyPatientMedicalRecords(params){
+    return axios.ajax('http://120.76.200.217:7080/MyPatientHealthMedicalRecords/GetMyPatientMedicalRecords', params);
+}
+//获取就诊记录详情-获取病历列表
+export function GetMedicalRecordInfoList(params){
+    return axios.ajax('http://120.76.200.217:7080/MyPatientHealthMedicalRecords/GetMedicalRecordInfoList', params);
+}
+// //获取就诊记录列表-获取病历详情
+// export function GetMedicalRecordInfo(params){
+//     return axios.ajax('/MyPatientHealthMedicalRecords/GetMedicalRecordInfo', params);
+// }
+//获取就诊记录列表-获取检查列表
+export function GetHealthEventCheckList(params){
+    return axios.ajax('/MyPatientHealthMedicalRecords/GetHealthEventCheckList', params);
+}
+// //获取就诊记录列表-获取检查详情
+// export function GetHealthEventCheckInfo(params){
+//     return axios.ajax('/MyPatientHealthMedicalRecords/GetHealthEventCheckInfo', params);
+// }
+// //获取就诊记录列表-获取处方列表
+// export function GetHealthEventPrescriptionList(params){
+//     return axios.ajax('/MyPatientHealthMedicalRecords/GetHealthEventPrescriptionList', params);
+// }
+// //获取就诊记录列表-获取处方详情
+// export function GetHealthEventPrescriptionInfo(params){
+//     return axios.ajax('/MyPatientHealthMedicalRecords/GetHealthEventPrescriptionInfo', params);
+// }
+

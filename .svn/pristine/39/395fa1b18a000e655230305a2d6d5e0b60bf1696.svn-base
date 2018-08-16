@@ -1,0 +1,120 @@
+<template>
+	<div class="page">
+        <div class="header">
+            <!-- 导航 -->
+            <div class="back-nav" @click="router.back()">{{ msg }}</div>
+            <div class="search">
+                <input type="text" placeholder="搜索">
+            </div>
+        </div>
+		<div class="container">
+			<div class="list">
+                <div class="item">
+                    <div class="item-header">1.许文龙</div>
+                    <div class="item-body">
+                        <div>年龄：<span>28岁</span></div>
+                        <div>性别：<span>男</span></div>
+                    </div>
+                    <div class="item-footer">
+                        <div>健康档案</div>
+                        <div>待录</div>
+                    </div>
+                </div>
+            </div>
+		</div>
+	</div>
+</template>
+
+<script>
+export default {
+	name: "PatientManagement",
+	data() {
+		return {
+            msg: "患者管理",
+		};
+    },
+    created() {
+        console.log(13)
+    },
+};
+</script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style lang="scss" scoped>
+    @import '@/public/scss/common.scss';
+
+	.page {
+        @include body-bgColor();
+        .header {
+            .back-nav {
+                @include nav-top;
+            }
+            .search {
+                @include item-padding-between;
+                input {
+                    @include txt-deep-gray;
+                    @include item-bgColor;
+                    @include border-radius;
+                    @include item-margin-top;
+                    @include item-margin-bottom;
+                    width: 100%;
+                    height: 36px;
+                    text-align: center;
+                    border: none;
+                    outline: none;
+                }
+            }
+        }
+		.container {
+            @include item-padding-between;
+            .list {
+                .item {
+                    @include border-radius;
+                    @include item-bgColor;
+                    @include bd-color;
+                    overflow: hidden;
+                    .item-header {
+                        @include deeper-gray;
+                        height: 50px;
+                        @include spacebetween;
+                        background-color: rgba(245,245,245,1);
+                        padding: 0 20px;
+                    }
+                    .item-body {
+                        padding: 0 20px;
+                        @include fontsize15;
+                        >div {
+                            @include txt-light-gray;
+                            >span {
+                                @include txt-deep-gray;
+                            }
+                            &:first-child {
+                                margin-top: 20px;
+                            }
+                            &:last-child {
+                                margin:  10px 0 20px;
+                            }
+                        }
+                    }
+                    .item-footer {
+                        @include flex;
+                        @include txt-deepgreen;
+                        @include bd-top;
+                        @include fontsize15;
+                        height: 46px;
+                        font-weight: 600;
+                        >div {
+                            width: 50%;
+                            line-height: 46px;
+                            text-align: center;
+                            &:last-child {
+                                @include bd-left(1px, #d9d9d9);
+                            }
+                        }
+                    }
+                }
+            }
+		}
+	}
+
+</style>

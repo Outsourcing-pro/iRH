@@ -1,0 +1,157 @@
+<template>
+    <div class="page">
+        <div class="header">
+            <!-- 导航 -->
+            <div class="back-nav" @click="router.back()">
+                <svg class="icon" aria-hidden="true">
+                <use xlink:href="#icon-nav_fanhui_baise"></use>
+            </svg>{{ msg }}</div>
+            <div class="search">
+                <input type="text" placeholder="搜索">
+            </div>
+        </div>
+        <div class="filter">全部
+            <svg class="icon" aria-hidden="true">
+                <use xlink:href="#icon-xialakuangjiantou"></use>
+            </svg>
+        </div>
+        <div class="container">
+            <div class="item">
+                <div class="item-hd">
+                    <span class="tag">门诊</span>健康管理
+                </div>
+                <div class="item-bd">
+                    <div>住院/门诊号：<span class="content">1111111</span></div>
+                    <div>医院/门诊：<span class="content">省第一人民医院</span></div>
+                    <div>日期：<span class="content">2017-11-05</span></div>
+                </div>
+                <div class="item-ft">
+                    <div>病例</div>
+                    <div>检查</div>
+                    <div>处方</div>
+                </div>
+            </div>
+            <div class="void"></div>
+        </div>
+    </div>
+</template>
+
+<script>
+    export default {
+        name: "medicalRecords",
+        data() {
+            return {
+                msg: "就医记录",
+            };
+        },
+        created() {
+        },
+    };
+</script>
+
+<style lang="scss" scoped>
+    @import '@/public/scss/common.scss';
+    .page{
+        @include body-bgColor();
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        .header{
+            .back-nav {
+                @include nav-top;
+            }
+            .search {
+                @include item-padding-between;
+                background-color: #ffffff;
+                input {
+                    @include txt-deep-gray;
+                    @include border-radius;
+                    background-color: #EFEFF4;
+                    margin: 6px 0;
+                    width: 100%;
+                    height: 36px;
+                    text-align: center;
+                    border: none;
+                    outline: none;
+                }
+            }
+        }
+        .filter{
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            background-color: #ffffff;
+            @include bd-top;
+            @include fontsize15;
+        }
+        .container{
+            padding: 10px;
+    		background-color: #eef1f6;
+            .item{
+                border-radius: 5px;
+                font-size: 15px;
+                background-color: #ffffff;
+                .item-hd{
+                    font-size: 18px;
+                    font-weight: bold;
+                    height: 50px;
+                    line-height: 50px;
+                    @include deeper-gray;
+                    .tag{
+                        display: inline-block;
+                        width: 50px;
+                        height: 22px;
+                        line-height: 22px;
+                        border-radius: 2px;
+                        font-size: 15px;
+                        text-align: center;
+                        margin: 0 10px 0 20px;
+                        font-weight: normal;
+                        background-color: #BDE799;
+                        @include txt-deep-gray;
+                        @include fontsize15;
+                    }
+                }
+                .item-bd{
+                    padding: 20px 0;
+                    color: #888888;
+                    @include bd-bottom;
+                    >div {
+                        padding: 0 20px 16px 20px;
+                        &:last-child{
+                            padding-bottom: 0;
+                        }
+                    }
+                    .content{
+                        color: #333333;
+                    }
+                }
+                .item-ft{
+                    @include flex;
+                    @include txt-deepgreen;
+                    @include bd-top;
+                    @include fontsize15;
+                    @include flex-center;
+                    height: 46px;
+                    >div{
+                        flex: 1;
+                        @include bd-left(1px, #d9d9d9);
+                        &:first-child::before {
+                            content: '';
+                            position: absolute;
+                            height: 100%;
+                            left: 0;
+                            border-left: none;
+                        }
+                    }
+                }
+            }
+            .void{
+                height: 10px;
+                background-color: #eef1f6;
+            }
+        }
+    }
+</style>

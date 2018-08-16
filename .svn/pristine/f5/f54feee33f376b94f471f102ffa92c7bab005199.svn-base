@@ -1,0 +1,19 @@
+import Calendar from './calendar/calendar-actionsheet.js';
+
+import base from './base.js';
+import * as dom from './dom.js';
+
+var app = {
+    ...base,
+    dom
+}
+
+Vue.prototype.app = window.app = app;
+
+app.install = function(Vue, options) {
+    Object.assign({}, options)
+
+    Vue.use(Calendar, options, this);
+};
+
+export default app;

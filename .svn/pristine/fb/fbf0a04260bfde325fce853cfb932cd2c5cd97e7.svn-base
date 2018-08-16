@@ -1,0 +1,213 @@
+import Vue from 'vue'
+import Router from 'vue-router'
+import HomePage from '@/pages/HomePage'
+
+// import PatientManagement from '@/pages/patientManagement/list'
+const patientList = () => import ( /* webpackChunkName: "A2-hzgl" */ '@/pages/patientManagement/list')
+const PatientDetail = () => import ( /* webpackChunkName: "A2-hzgl" */ '@/pages/patientManagement/detail')
+const HealthRecord = () => import(/* webpackChunkName: "A2-hzgl" */ '@/pages/patientManagement/health-record')
+const HealthEventList = () => import(/* webpackChunkName: "A3-1-jkda-jksj" */ '@/pages/patientManagement/health-event-list')
+const CaseHistoryDetail = () => import(/* webpackChunkName: "A4-mzbl-zybl" */ '@/pages/patientManagement/case-history')
+const MedicalHistory = () => import(/* webpackChunkName: "A4-4-bs-jcjg" */ '@/pages/patientManagement/medical-history')
+const CheckProject = () => import(/* webpackChunkName: "A5-2-jcxm" */ '@/pages/patientManagement/check-project')
+const Prescription = () => import(/* webpackChunkName: "A6-2-cfmx" */ '@/pages/patientManagement/prescription')
+const HomeworkList = () => import(/* webpackChunkName: "A6-2-cfmx" */ '@/pages/patientManagement/homework-list')
+
+
+/* Example模块 */
+// import ExampleHome from '@/example/example'
+/* 导入异步组件块 */
+// import One from '../example/chunk-one/index'
+// import Two from '../example/chunk-two/index'
+// import TestPage from '../example/test-router/index'
+// import StorePage from '../example/global-store/index.vue'
+// import NoModules from '../example/global-store/child/noModules.vue'
+// import Modules from '../example/global-store/child/modules.vue'
+/* Example end */
+
+/**刘超 */
+import LC from '../pages/lc.vue';
+const MedicalRecords = () => import ( /* webpackChunkName: "A13-jyjl" */ '@/pages/medicalRecords/medical-records');
+const MedicalRecordsDetail = () => import ( /* webpackChunkName: "A13-1-jyjl-xq" */ '@/pages/medicalRecords/medical-records-detail');
+const MedicalRecordsHistory = () => import ( /* webpackChunkName: "A14-jyjl-bl" */ '@/pages/medicalRecords/medical-records-history');
+const MedicalRecordsPrescription = () => import ( /* webpackChunkName: "A14-2-jyjl-cf" */ '@/pages/medicalRecords/medical-records-prescription');
+const RecordEditWork = () => import ( /* webpackChunkName: "A16-dl-irh" */ '@/pages/patientManagement/record-edit-work');
+const RecordDailyWork = () => import ( /* webpackChunkName: "A17-dl-mrzy" */ '@/pages/patientManagement/record-daily-work');
+const RecordQueryWork = () => import ( /* webpackChunkName: "A17-2-dl-zycx" */ '@/pages/patientManagement/record-query-work');
+const MemoList = () => import ( /* webpackChunkName: "C1-wdbwl" */ '@/pages/memo/memo-list');
+const MemoEdit = () => import ( /* webpackChunkName: "C1-2-xzbwl" */ '@/pages/memo/memo-edit');
+const ReplaceLaborList = () => import ( /* webpackChunkName: "B-dl" */ '@/pages/replace-labor/replace-labor-list');
+const ReplaceLaborDetail = () => import ( /* webpackChunkName: "B-1-dlxq" */ '@/pages/replace-labor/replace-labor-detail');
+const ReplaceLaborSearch = () => import ( /* webpackChunkName: "B3-1-hzxz" */ '@/pages/replace-labor/replace-labor-search');
+const DataEntry = () => import ( /* webpackChunkName: "B4-2-sjlr" */ '@/pages/replace-labor/data-entry');
+/**刘超 */
+Vue.use(Router)
+
+
+export default new Router({
+	routes: [
+		{
+			path: '/',
+			name: 'HomePage',
+			component: HomePage
+		},
+		{
+			path: '/patientList',
+			name: 'patientList',
+			component: patientList
+		},
+		{
+			path: '/patientDetail',
+			name: 'PatientDetail',
+			component: PatientDetail
+		},
+		{
+			path: '/healthRecord',
+			name: 'HealthRecord',
+			component: HealthRecord
+		},
+		{
+			path: '/healthEventList/:type',
+			name: 'HealthEventList',
+			component: HealthEventList
+		},
+		{
+			path: '/caseHistoryDetail/:type',
+			name: 'CaseHistoryDetail',
+			component: CaseHistoryDetail,
+			children: [
+				{
+					path: '/homeworkList',
+					name: 'HomeworkList',
+					components: {
+						homeworkDetails: HomeworkList
+					}
+				}
+			]
+		},
+		{
+			path: '/medicalHistory',
+			name: 'MedicalHistory',
+			component: MedicalHistory
+		},
+		{
+			path: '/checkProject',
+			name: 'CheckProject',
+			component: CheckProject
+		},
+		{
+			path: '/prescription',
+			name: 'Prescription',
+			component: Prescription
+		}
+		/* example */
+		/* {
+			path: '/example',
+			name: 'ExamplePage',
+			component: ExampleHome,
+		},
+		{
+			path: '/One',
+			name: 'test1',
+			component: One.Test1
+		},
+		{
+			path: '/Two',
+			name: 'test2',
+			component: One.Test2
+		},
+		{
+			path: '/Three',
+			name: 'test3',
+			component: One.Test3
+		},
+		{
+			path: '/Four',
+			name: 'test4',
+			component: Two.Test4
+		},
+		{
+			path: '/Five',
+			name: 'test5',
+			component: Two.Test5
+		},
+		{
+			path: '/test*',
+			name: 'testpage',
+			component: TestPage
+		},
+		{
+			path: '/store',
+			name: 'storepage',
+			component: StorePage,
+		},
+		{
+			path: '/noModules',
+			name: 'noModulespage',
+			component: NoModules
+		},
+		{
+			path: '/modules',
+			name: 'modulespage',
+			component: Modules
+		}, */
+		/* example end */
+		,{
+			path: '/lc',
+			name: 'lcPages',
+			component: LC
+		},{
+			path: '/medicalRecords',
+			name: 'MedicalRecords',
+			component: MedicalRecords
+		},{
+			path: '/medicalRecordsDetail',
+			name: 'MedicalRecordsDetail',
+			component: MedicalRecordsDetail
+		},{
+			path: '/medicalRecordsHistory',
+			name: 'MedicalRecordsHistory',
+			component: MedicalRecordsHistory
+		},{
+            path: '/medicalRecordsPrescription',
+            name: 'MedicalRecordsPrescription',
+            component: MedicalRecordsPrescription
+        },{
+            path: '/recordEditWork',
+            name: 'RecordEditWork',
+            component: RecordEditWork
+        },{
+            path: '/recordDailyWork',
+            name: 'RecordDailyWork',
+            component: RecordDailyWork
+        },{
+            path: '/recordQueryWork',
+            name: 'RecordQueryWork',
+            component: RecordQueryWork
+        },{
+            path: '/memoList',
+            name: 'MemoList',
+            component: MemoList
+        },{
+            path: '/memoEdit',
+            name: 'MemoEdit',
+            component: MemoEdit
+		},{
+            path: '/replaceLaborList',
+            name: 'ReplaceLaborList',
+            component: ReplaceLaborList
+		},{
+            path: '/replaceLaborDetail',
+            name: 'ReplaceLaborDetail',
+            component: ReplaceLaborDetail
+		},{
+            path: '/replaceLaborSearch',
+            name: 'ReplaceLaborSearch',
+            component: ReplaceLaborSearch
+		},{
+            path: '/dataEntry',
+            name: 'DataEntry',
+            component: DataEntry
+		}
+	]
+})

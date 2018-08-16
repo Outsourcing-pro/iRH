@@ -1,0 +1,143 @@
+/** 就医记录_检查*/
+<template>
+    <div class="page">
+        <div class="header">
+            <!-- 导航 -->
+            <div class="back-nav" @click="$router.back()">
+                <svg class="icon" aria-hidden="true">
+					<use xlink:href="#icon-nav_fanhui_baise"></use>
+                </svg>{{ msg }}
+            </div>
+        </div>
+        <div class="tab-bar">
+            <div class="tab-item" 
+                :class="{selected:index==type}" 
+                v-for="(item, index) in headerList"
+                @click="changeType(index)"><span>{{item}}</span></div>
+        </div>
+        <div class="container">
+			<div v-for="(item,index) in data" :key="index">
+				<div class="item">
+					<div class="item">
+                        <div class="item-hd" :class="{'type1':item.TypeId==1,'type2':item.TypeId==2}">{{item.TypeId==0?"实验室检查类":item.TypeId==1?"专项检查类":"体格检查类"}}</div>
+                        <div class="item-bd">
+                            <div>场所：<span>{{item.Place}}</span></div>
+                            <div>检查单号：<span>{{item.CheckCode}}</span></div>
+                            <div>iRH扫描件号：<span>{{item.iRHScanCode}}</span></div>
+                            <div>机构：<span>{{item.CheckOrg}}</span></div>
+                            <div>科室：<span>{{item.CheckDep}}</span></div>
+                        </div>
+                        <div class="item-ft">
+                            <div class="date">{{item.CheckDate}}</div>
+                            <div>报告人：<span>{{item.CheckUser}}</span></div>
+                        </div>
+                    </div>
+				</div>
+				<div class="separate"></div>
+			</div>
+        </div>
+    </div>
+</template>
+
+<script>
+	import {GetHealthEventCheckList} from '../../api/interface';
+
+	export default {
+		name: "medicalRecordsCheck",
+		data() {
+			return {
+                msg: "就医记录",
+                headerList: ['全部','实验室检查类','专项检查类','体格检查类'],
+                type: 0, //0全部 1实验检查类 2专项检查类 3体格检查类
+				data: []
+			}
+		},
+		created() {
+			this.renderPage();
+        },
+        methods: {
+            changeType(index){ //切换类型
+                this.type = index;
+                this.renderPage()
+            },
+            renderPage(){
+                GetHealthEventCheckList({
+                    pkid: this.$router.currentRoute.params.id,
+                    type: this.type
+                }).then(res => {
+                    this.data = res.data;
+                })
+            }
+        }
+	};
+</script>
+
+<style lang="scss" scoped>
+	@import "@/public/scss/common.scss";
+
+	.page {
+		@include body-bgColor();
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		.header {
+			.back-nav {
+			@include nav-top;
+			}
+		}
+		.container {
+			padding: 10px;
+            background-color: #eef1f6;
+            height: calc(100vh - 84px);
+			.item {
+				border-radius: 5px;
+				background-color: #ffffff;
+				.item-hd {
+					font-size: 18px;
+					height: 50px;
+					padding: 0 20px;
+					font-weight: bold;
+					background-color: #f4feec;
+					@include spacebetween;
+					&.type1 {
+					background-color: #f5ede1;
+					}
+					&.type2 {
+					background-color: #e8f4f8;
+					}
+				}
+				.item-bd {
+					padding: 20px 0;
+					@include fontsize15;
+					> div {
+					@include txt-light-gray;
+					> span {
+						@include txt-deep-gray;
+					}
+					padding: 0 20px 16px 20px;
+					&:last-child {
+						padding-bottom: 0;
+					}
+					}
+				}
+				.item-ft {
+					height: 45px;
+					line-height: 45px;
+					padding: 0 20px;
+					font-size: 14px;
+					@include spacebetween;
+					@include bd-top;
+					@include txt-light-gray;
+					.date {
+					color: #333333;
+					}
+					span {
+					@include txt-deep-gray;
+					}
+				}
+			}
+		}
+	}
+</style>

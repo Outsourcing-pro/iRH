@@ -1,0 +1,103 @@
+/* T1我的消息
+T2我的消息_公告通知
+ */
+ <template>
+    <div class="page">
+        <div class="header">
+            <!-- 导航 -->
+            <div class="back-nav" @click="$router.back()">
+                <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-nav_fanhui_baise"></use>
+                </svg>{{ msg }}
+            </div>
+        </div>
+        <div class="tab-bar">
+            <div class="tab-item selected"><span>系统消息</span></div>
+            <div class="tab-item"><span>公告通知</span></div>
+        </div>
+        <div class="separate"></div>
+        <div class="container">
+            <router-link class="item" tag="div" :to="{path:`/noticeDetail/1111`}">
+                <div><div><span class="tag">未读</span>好友关注消息</div><span class="date">2018-05-13 00:55:28</span></div>
+                <div>[kb]申请了关注你，请及时处理！</div>
+            </router-link>
+            <router-link class="item" tag="div" :to="{path:`/noticeDetail/1111`}">
+                <div><div><span class="tag readed">已读</span>好友关注消息</div><span class="date">2018-05-13 00:55:28</span></div>
+                <div>[kb]申请了关注你，请及时处理！</div>
+            </router-link>
+        </div>
+    </div>
+</template>
+
+<script>
+    export default {
+        name: "NoticeList",
+        data() {
+            return {
+                msg: "我的消息"
+            };
+        },
+        created() {}
+    };
+</script>
+
+<style lang="scss" scoped>
+    @import "@/public/scss/common.scss";
+
+    .page {
+        @include body-bgColor();
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        .header {
+            .back-nav {
+                @include nav-top;
+            }
+        }
+        .container {
+            background-color: #eef1f6;
+            height: calc(100vh - 94px);
+            .item {
+                line-height: 1;
+                padding: 14px 10px;
+                background-color: #ffffff;
+                > div {
+                    &:first-child {
+                        @include fontsize18();
+                        @include deeper-gray();
+                        @include spacebetween();
+                        padding-bottom: 15px;
+                        line-height: 22px;
+                        .tag {
+                            display: inline-block;
+                            width: 50px;
+                            height: 22px;
+                            text-align: center;
+                            line-height: 22px;
+                            background-color: #BDE799;
+                            color: #333333;
+                            font-size: 14px;
+                            border-radius: 2px;
+                            margin-right: 10px;
+                            &.readed {
+                                background-color: #EDEDED;
+                                color: #878787;
+                            }
+                        }
+                        .date {
+                            font-size: 13px;
+                            color: #888888;
+                        }
+                    }
+                    &:last-child {
+                        color: #888888;
+                        font-size: 14px;
+                    }
+                }
+                @include bd-bottom(10px,#DDDDDD);
+            }
+        }
+    }
+</style>
